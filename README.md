@@ -1,2 +1,12 @@
 # ea0002-arduino-software-architecture
 Collection of code related to the Elektor Academy course introducing software architecture and development of portable code.
+
+This respository consists of the following Arduino projects:
+* trafficlight-one: A simple project to control LEDs attached to an Arduino as a traffic light. This uses the typical coding approach, placing the LED setup in the setup() loop and controlling the LEDs in the loop() function. The time delay is handled by the delay() function. This version is dependent on the Arduino environment and the support it provides for interacting with the microcontroller hardware.
+* trafficlight-statemachine: This version of the project introduces a struct and a switch statement to implement the functionality of the traffic light as a state machine. This is the first step in decoupling the functionality of the traffic lights from the the Arduino environment.
+* trafficlight-timerdecoupled: This version makes use of a function pointer to decouple the traffic light functionality from the Arduino's delay() function. This allows a developer to handle the delays in software as they see best. The phase timings can also be set by the developer.
+* trafficlight-LEDdecoupled: This version introduces a function pointer to implement the control of the LEDs. This allows the traffic light functionality to operate independently of the hardware used to control the LEDs. The developer has to provide a function that can turn the requested LED on and off.
+* trafficlightModule: With this version, the traffic light functionality is moved to its own source code file with header. This reduces the Arduino loop() function significantly, with just a single function call to make the traffic lights work. At this point, we have traffic light code that can be used on any board or microcontroller.
+* trafficlighModulePair: To display the power of this approach, a second set of traffic lights is added with different phase timings. This is achieved with minimal changes and, more importantly, requires no changes to the code that implements the traffic light functionality. Additionally, the user code to implement the time delay can be shared between the two traffic lights.
+
+Note that the execution of each project looks exactly the same. What changes is how the traffic light functionality is implemented in software and how decoupled it is from the Arduino ecosystem.
