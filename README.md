@@ -1,4 +1,4 @@
-# ea0002-arduino-software-architecture
+# ea0003-arduino-software-architecture
 Collection of code related to the Elektor Academy course introducing software architecture and development of portable code.
 
 This respository consists of the following Arduino projects:
